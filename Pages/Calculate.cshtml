@@ -1,0 +1,39 @@
+﻿@page
+@using Microsoft.AspNetCore.Http    
+@inject IHttpContextAccessor httpContextAccessor
+
+
+@model NetApp.Pages.CalculateModel
+@{
+    Layout = null;
+    var message = @Model.Message;
+
+    if (httpContextAccessor.HttpContext.Session.GetString("login") == null){
+        RedirectToPage("Login");
+    }
+
+}
+<script type="text/javascript">
+    function goToSrc(){
+
+}
+</script>
+
+<fieldset>
+    <legend>Calculate</legend>
+    <form method="POST">
+        <label for="initial_value">Inital Value: &nbsp</label><input type="number" name="initial_value">
+        <label for="time">Time: &nbsp</label><input type="number" name="time">
+        <input type="submit">
+    </form>
+    <input type="button" value="Go to ource" onclick="">
+    <br/>
+    @if (message != null){
+        <span>
+            @message
+        </span>
+    }
+    
+    
+    
+</fieldset>
